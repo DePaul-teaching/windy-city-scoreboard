@@ -15,5 +15,5 @@ jobs:
       - name: Look around the runner
         run: |
           echo "Hello from a fresh runner!"
-          ls scoreboard-api
+          ls -al
           python3 --version
