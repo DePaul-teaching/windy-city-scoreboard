@@ -4,6 +4,10 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
+permissions:
+      contents: read
+      packages: write
+
 
 jobs:
   test:
@@ -44,3 +48,12 @@ jobs:
         with:
           context: scoreboard/scoreboard-api
           push: false
+
+      - name: Log in to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
