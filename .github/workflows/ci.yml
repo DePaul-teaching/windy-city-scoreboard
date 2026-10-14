@@ -3,11 +3,14 @@ name: CI
 on:
   push:
     branches: ["main"]
+    paths:
+      - "scoreboard/scoreboard-api/**"
+      - ".github/workflows/ci.yml"
+
   workflow_dispatch:
 permissions:
       contents: read
       packages: write
-
 
 jobs:
   test:
